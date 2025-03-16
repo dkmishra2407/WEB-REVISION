@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+    <div id="user-data"></div>
+    <script>
+        const start = document.querySelector("#start");
+        const stop = document.querySelector("#stop");
+        const userDataDiv = document.querySelector("#user-data");
+        let intervalId = null;
+        
+        async function fetchGithubUser(username) {
+            try {
+                const response = await axios.get(`https://api.github.com/users/${username}`);
+                userDataDiv.innerHTML = `
+                    <h2>${response.data.name || response.data.login}</h2>
+                    <img src="${response.data.avatar_url}" width="100">
+                    <p>Followers: ${response.data.followers}</p>
+                    <p>Public Repos: ${response.data.public_repos}</p>
+                `;
+            } catch (error) {
+                console.error('Error:', error);
+                userDataDiv.innerHTML = `<p>Error fetching user data: ${error.message}</p>`;
+            }
+        }
+
+        function func1(){
+            console.log("jay shree ram");
+        }
+
+        function callstart(){
+            if (!intervalId) {
+                intervalId = setInterval(func1, 1000);
+                fetchGithubUser('dkmishra2407');
+            }
+        }
+
+        function callstop(){
+            if (intervalId) {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
+        }
+
+        start.addEventListener("click", callstart);
+        stop.addEventListener("click", callstop);
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+//       EXPORTING ISSUE     //
+
+// when we importing with default export we can import without {} 
+// import notes from './notes.js';
+
+// import Header from './components/Header'
+// const Header = () => {
+//   return (
+//     <div>Header</div>
+//   )
+// }
+// export default Header
+
+// import Header from './components/Header'
+
+// when we importing with named export we can import with {}
+// import {notes} from './notes.js';
+
+// export const Footer = () => {
+//     return (
+//       <div>Footer hai to sab hai</div>
+//     )
+// }
+  
+// import { Footer } from './components/Footer'
+
+// HOW TO USE THE FUNCTION IN THE REACT COMPONENT
+
+// IF THE FUNCTION IS CALLING ALL THE IDS MULTIPLE TIME THEN THE USE ARROW FUNCTION TO PASS TRHE ID'S
+
+// <button className='btn btn-sm btn-danger' onClick={() => {Ondelete(item.id)}}>Delete</button>
